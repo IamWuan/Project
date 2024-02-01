@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import os
 from pygame.math import Vector2
 
 pygame.init()
@@ -18,6 +19,41 @@ SNAKE_COLOR = (231, 111, 81)
 # Window screen 500 x 500
 screen = pygame.display.set_mode(
     (CELL_SIZE * CELL_NUM, CELL_SIZE * CELL_NUM)) 
+
+
+# Graphics
+# self.SFX_EAT = pygame.mixer.Sound(os.path.join('src','assets', 'eat.ogg'))
+APPLE            = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'apple.png')).convert_alpha()
+# For Snake (God pls help me is tooooooo long :<)
+BODY_BOTTOMLEFT  = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'body_bottomleft.png')).convert_alpha()
+BODY_BOTTOMTIGHT = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'body_bottomright.png')).convert_alpha()
+BODY_HORIZONTAL  = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'body_horizontal.png')).convert_alpha()
+BODY_TOPLEFT     = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'body_topleft.png')).convert_alpha()
+BODY_TOPRIGHT    = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'body_topright.png')).convert_alpha()
+BODY_VERTICAL    = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'body_vertical.png')).convert_alpha()
+HEAD_DOWN        = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'head_down.png')).convert_alpha()
+HEAD_LEFT        = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'head_left.png')).convert_alpha()
+HEAD_RIGHT       = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'head_right.png')).convert_alpha()
+HEAD_UP          = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'head_up.png')).convert_alpha()
+TAIL_DOWN        = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'tail_down.png')).convert_alpha()
+TAIL_LEFT        = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'tail_left.png')).convert_alpha()
+TAIL_RIGHT       = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'tail_right.png')).convert_alpha()
+TAIL_UP          = pygame.image.load(os.path.join(
+    'TheSnakeGame', 'assets', 'graphic', 'tail_up.png')).convert_alpha()
 
 clock = pygame.time.Clock() # For the FPS  
 
@@ -40,7 +76,7 @@ class FRUIT:
         y_pos = self.pos.y * CELL_SIZE
         fruit_rect = pygame.Rect(x_pos, y_pos, CELL_SIZE, CELL_SIZE)
         # Draw the rectangle for the fruit 
-        pygame.draw.rect(screen, FRUIT_COLOR, fruit_rect)
+        screen.blit(APPLE, fruit_rect)
 
 class SNAKE:
     def __init__(self):
